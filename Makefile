@@ -1,10 +1,7 @@
 CC              =               gcc
-NAME            =               my_ls
+NAME            =               my_printf
 SRC             =               main.c          \
-                                function.c      \
-				ls.c		\
-				my_lsl.c	\
-                                verif.c
+                                func.c      
 
 CFLAGS          =               -W -Wall -Werror
 RM              =               rm -f
