@@ -1,10 +1,21 @@
+/*
+** main.c for my_printf in /Users/thierr_l/Documents/my_printf
+** 
+** Made by THIERRY Loris
+** Login   <thierr_l@etna-alternance.net>
+** 
+** Started on  Mon Apr  4 10:09:36 2016 THIERRY Loris
+** Last update Mon Apr  4 16:59:29 2016 THIERRY Loris
+*/
+
 #include <stdarg.h>
 #include <stdio.h>
 #include "outils.h"
 
-void    my_printf (const char *texte, ...)
+int my_printf(char *texte, ...)
 {
   int tailleChaine = 0, i;
+  double sum = 0;
   va_list ap;
   va_start(ap, texte);
    
@@ -14,17 +25,30 @@ void    my_printf (const char *texte, ...)
     {
       if(texte[i] == '%')
 	{
-	  i++;
-	  i++;
-	  my_putchar(texte[i]);
+	  if (texte[i+1] == 'd')
+	    {
+	      sum = va_arg(ap, int);
+	      my_put_nbr(sum);
+	      i++;
+	    }
+	  if(texte[i+1] == 's')
+	    {
+	      sum = va_arg(ap, int);
+	      my_put_nbr(sum);
+	      i++;
+	    }
 	}
+      else
+	my_putchar(texte[i]);
     }
   va_end(ap);
+  return (0);
 }
 
 int    main ()
 {
-  int nombre1 = 1;
-  int nombre2 = 4;
-  my_printf("Le nombre 1 est egal a %lq et le nombre 2 a %ld", nombre1, nombre2);
+  my_printf("1 - une chaine\n");
+  my_printf("2 - %s\n", "une autre chaine\n");
+  my_printf("3 - %d\n", 42);
+  //my_printf("4 - %s %d %s%c", "avec", 4, "parametres", '\n');
 }
