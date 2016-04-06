@@ -9,37 +9,22 @@
 ** Last update Tue Apr  5 10:00:34 2016 THIERRY Loris
 */
 
-#include <stdarg.h>
-#include <stdio.h>
 #include "outils.h"
 
 int my_printf(char *texte, ...)
 {
   int tailleChaine = 0, i;
-  int sum = 0;
-  char *car
 
   va_list ap;
   va_start(ap, texte);
-   
   tailleChaine = strlen(texte);
     
   for(i = 0; i < tailleChaine; i++)
     {
       if(texte[i] == '%')
 	{
-	  if (texte[i+1] == 'd')
-	    {
-	      car = va_arg(ap, *char);
-	      my_putchar(car);
-	      i++;
-	    }
-	  if(texte[i+1] == 's')
-	    {
-	      sum = va_arg(ap, int);
-	      my_put_nbr(sum);
-	      i++;
-	    }
+	  my_pointeur(ap, texte[i+1]);
+	  i++;
 	}
       else
 	my_putchar(texte[i]);
@@ -51,7 +36,13 @@ int my_printf(char *texte, ...)
 int    main ()
 {
   my_printf("1 - une chaine\n");
-  my_printf("2 - %s\n", "une autre chaine\n");
-  my_printf("3 - %s %d\n", "loris" , 42);
-  //my_printf("4 - %s %d %s%c", "avec", 4, "parametres", '\n');
+  my_printf("2 - %s\n", "une autre chaine");
+  my_printf("3 - %d\n", 42);
+  my_printf("4 - %s %d %s%c", "avec", 4, "parametres", '\n');  
+  my_printf("1 - %o\n", 42); /* unsigned octal */
+  my_printf("2 - %u\n", (unsigned int)4200000000); /* unsigned decimal */
+  my_printf("3 - %x\n", 42); /* unsigned hexadecimal */
+  my_printf("4 - %X\n", 42); /* unsigned hexadecimal */
+  my_printf("5 - %d%%\n", 42);  
+return(0);
 }

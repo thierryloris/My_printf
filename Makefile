@@ -1,7 +1,9 @@
 CC              =               gcc
 NAME            =               my_printf
 SRC             =               main.c          \
-                                func.c      
+                                func.c      	\
+				my_printf.c	\
+				print_func.c	
 
 CFLAGS          =               -W -Wall -Werror
 RM              =               rm -f
