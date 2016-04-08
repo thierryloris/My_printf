@@ -1,23 +1,37 @@
 CC              =               gcc
-NAME            =               my_printf
-SRC             =               main.c          \
-                                func.c      	\
+
+SRC           	=               func.c      	\
 				my_printf.c	\
 				print_func.c	
 
-CFLAGS          =               -W -Wall -Werror
+CFLAGS          =               -fPIC -W -Wall -Werror -Wextra
+
+CFLAG		=		-shared
+
 RM              =               rm -f
+
 OBJ             =               $(SRC:%.c=%.o)
 
-$(NAME):			$(OBJ)
-				$(CC) $(OBJ) -o $(NAME) $(CFLAGS)
+STATIC		=		libmy_printf_`uname -m`-`uname -s`.a
 
-all:                            $(NAME)
+DYNAMIC		=		libmy_printf_`uname -m`-`uname -s`.so
+
+make :				all
+
+my_printf_static :		$(OBJ)
+				ar r $(STATIC) $(OBJ)
+
+my_printf_dynamic :		$(OBJ)
+				$(CC) $(CFLAGS) $(CFLAG) -o $(DYNAMIC) $(SRC)
+
+all:                            my_printf_static my_printf_dynamic
 
 clean:
 				$(RM) $(OBJ)
 
 fclean:                         clean
-				$(RM) $(NAME)
+				$(RM) $(STATIC) $(DYNAMIC)
 
 re:                             fclean all
+
+.PHONY :			make my_printf_static my_printf_dynamic all clean fclean re

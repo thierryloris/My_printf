@@ -12,3 +12,4 @@ void     my_prinmod();
 void     my_prinu(va_list ap);
 void     my_prini(va_list ap);
 void     my_prino(va_list ap);
+int      my_printf(char *texte, ...);

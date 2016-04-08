@@ -12,7 +12,7 @@ void my_prinmod()
 
 void my_prinu(va_list ap)
 {
-  my_putnbr(va_arg(ap, usigned int));
+  my_put_nbr(va_arg(ap, unsigned int));
 }
 
 void my_prini(va_list ap)

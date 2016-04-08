@@ -32,3 +32,26 @@ void my_pointeur(va_list ap, char c)
       i++;
     }
 }
+
+
+int my_printf(char *texte, ...)
+{
+  int tailleChaine = 0, i;
+
+  va_list ap;
+  va_start(ap, texte);
+  tailleChaine = strlen(texte);
+
+  for(i = 0; i < tailleChaine; i++)
+    {
+      if(texte[i] == '%')
+	{
+	  my_pointeur(ap, texte[i+1]);
+	  i++;
+	}
+      else
+	my_putchar(texte[i]);
+    }
+  va_end(ap);
+  return (0);
+}
