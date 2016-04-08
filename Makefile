@@ -2,7 +2,8 @@ CC              =               gcc
 
 SRC           	=               func.c      	\
 				my_printf.c	\
-				print_func.c	
+				print_func.c	\
+				print_hexa.c
 
 CFLAGS          =               -fPIC -W -Wall -Werror -Wextra
 

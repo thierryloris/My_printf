@@ -13,3 +13,7 @@ void     my_prinu(va_list ap);
 void     my_prini(va_list ap);
 void     my_prino(va_list ap);
 int      my_printf(char *texte, ...);
+void	 my_hex(unsigned int nbr, char *base);
+void     my_prinx(va_list ap);
+void     my_prinX(va_list ap);
+void     my_octa(unsigned int nbr, char *base);

@@ -22,5 +22,7 @@ void my_prini(va_list ap)
 
 void my_prino(va_list ap)
 {
-  my_putchar(va_arg(ap, int));
+  char *base;
+  base = "01234567";
+  my_octa(va_arg(ap, unsigned int), base);
 }

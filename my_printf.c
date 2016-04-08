@@ -12,12 +12,12 @@ void my_prins(va_list ap)
 
 void my_pointeur(va_list ap, char c)
 {
-  void (*tab[7]) (va_list);
+  void (*tab[9]) (va_list);
   int i;
   char* str;
 
   i = 0;
-  str = "%cuiods";
+  str = "%cuiodsxX";
   tab[0] = &my_prinmod;
   tab[1] = &my_princ;
   tab[2] = &my_prinu;
@@ -25,6 +25,8 @@ void my_pointeur(va_list ap, char c)
   tab[4] = &my_prino;
   tab[5] = &my_prind;
   tab[6] = &my_prins;
+  tab[7] = &my_prinx;
+  tab[8] = &my_prinX;
   while ( str[i] != '\0' )
     {
       if (c == str[i])
